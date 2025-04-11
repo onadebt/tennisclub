@@ -42,7 +42,6 @@ public class SurfaceTypeDaoImpl implements SurfaceTypeDao {
                 .filter(st -> !st.isDeleted());
     }
 
-
     @Override
     public SurfaceType save(SurfaceType entity) {
         if (entity.getId() != null) {
@@ -50,14 +49,6 @@ public class SurfaceTypeDaoImpl implements SurfaceTypeDao {
         }
         entityManager.persist(entity);
         return entity;
-    }
-
-
-    public void restore(SurfaceType entity) {
-        if (entity != null) {
-            entity.setDeleted(false);
-            entityManager.merge(entity);
-        }
     }
 
     @Override
