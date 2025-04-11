@@ -18,25 +18,6 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
-#    properties:
-#      hibernate:
-#        format_sql: true
-#        globally_quoted_identifiers: true
 
-#app:
-#  initialization:
-#    enabled: true
-#  jwt:
-#    secret: tennisclub-secret-key
-#    access-token-expiration-ms: 3600000 # 1 hour
-#    refresh-token-expiration-ms: 86400000 # 24 hours
-
-#logging:
-#  level:
-#    org:
-#      hibernate: INFO
-#      springframework:
-#        security: DEBUG
-#        web: INFO
-#    com:
-#      tennisclub: DEBUG
+app:
+  data-init: false
