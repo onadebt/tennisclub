@@ -14,28 +14,23 @@ import java.util.stream.Collectors;
 @Service
 public class SurfaceTypeFacade {
 
+    private final SurfaceTypeService surfaceTypeService;
+    private final SurfaceTypeMapper surfaceTypeMapper;
+
     @Autowired
-    private SurfaceTypeService surfaceTypeService;
-    @Autowired
-    private SurfaceTypeMapper surfaceTypeMapper;
+    public SurfaceTypeFacade(SurfaceTypeService surfaceTypeService, SurfaceTypeMapper surfaceTypeMapper) {
+        this.surfaceTypeService = surfaceTypeService;
+        this.surfaceTypeMapper = surfaceTypeMapper;
+    }
 
 
     public SurfaceTypeDto createSurfaceType(SurfaceTypeCreateDto surfaceTypeCreateDto) {
-        if (surfaceTypeCreateDto.getName() == null) {
-            throw new IllegalArgumentException("Surface type name cannot be null");
-        }
-
         SurfaceType newSurfaceType = surfaceTypeService.create(surfaceTypeMapper.toEntity(surfaceTypeCreateDto));
         return surfaceTypeMapper.toDto(newSurfaceType);
     }
 
     public SurfaceTypeDto getById(Long id) {
         SurfaceType surfaceType = surfaceTypeService.getById(id);
-        return surfaceTypeMapper.toDto(surfaceType);
-    }
-
-    public SurfaceTypeDto getByName(String name) {
-        SurfaceType surfaceType = surfaceTypeService.getByName(name);
         return surfaceTypeMapper.toDto(surfaceType);
     }
 
