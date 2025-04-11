@@ -1,4 +1,4 @@
-package cz.inqool.tennisclub.exception;
+package cz.inqool.tennisclub.exception.surfacetype;
 
 public class SurfaceTypeNotFoundException extends RuntimeException {
     public SurfaceTypeNotFoundException(Long id) {
