@@ -15,8 +15,12 @@ import java.util.List;
 @RequestMapping("/api/surface-types")
 public class SurfaceTypeController {
 
+    private final SurfaceTypeFacade surfaceTypeFacade;
+
     @Autowired
-    SurfaceTypeFacade surfaceTypeFacade;
+    public SurfaceTypeController(SurfaceTypeFacade surfaceTypeFacade) {
+        this.surfaceTypeFacade = surfaceTypeFacade;
+    }
 
     @PostMapping
     public ResponseEntity<SurfaceTypeDto> createSurfaceType(@RequestBody @Valid SurfaceTypeCreateDto surfaceTypeCreateDto) {
