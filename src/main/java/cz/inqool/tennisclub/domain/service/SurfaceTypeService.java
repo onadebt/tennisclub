@@ -1,8 +1,8 @@
 package cz.inqool.tennisclub.domain.service;
 
 import cz.inqool.tennisclub.domain.model.SurfaceType;
-import cz.inqool.tennisclub.exception.SurfaceAlreadyExistsException;
-import cz.inqool.tennisclub.exception.SurfaceTypeNotFoundException;
+import cz.inqool.tennisclub.exception.surfacetype.SurfaceAlreadyExistsException;
+import cz.inqool.tennisclub.exception.surfacetype.SurfaceTypeNotFoundException;
 import cz.inqool.tennisclub.infrastructure.dao.interfaces.SurfaceTypeDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,14 +12,18 @@ import java.util.Optional;
 
 @Service
 public class SurfaceTypeService {
-    @Autowired
-    private SurfaceTypeDao surfaceTypeDao;
 
-    public SurfaceType create(SurfaceType surfaceType){
+    private final SurfaceTypeDao surfaceTypeDao;
+
+    @Autowired
+    public SurfaceTypeService(SurfaceTypeDao surfaceTypeDao) {
+        this.surfaceTypeDao = surfaceTypeDao;
+    }
+
+    public SurfaceType create(SurfaceType surfaceType) {
         if (surfaceTypeDao.findByName(surfaceType.getName()).isPresent()) {
             throw new SurfaceAlreadyExistsException(surfaceType.getName());
         }
-
         return surfaceTypeDao.save(surfaceType);
     }
 
@@ -37,6 +41,7 @@ public class SurfaceTypeService {
         if (surfaceType.isEmpty()) {
             throw new SurfaceTypeNotFoundException(id);
         }
+        surfaceTypeDao.delete(surfaceType.get());
     }
 
     public SurfaceType getByName(String name) {
