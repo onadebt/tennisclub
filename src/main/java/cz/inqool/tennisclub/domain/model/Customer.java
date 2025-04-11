@@ -7,17 +7,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.math.BigDecimal;
 
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-public class SurfaceType extends BaseEntity {
-    @Column(unique = true, nullable = false)
+public class Customer extends BaseEntity {
     private String name;
-    @Column(nullable = false)
-    private BigDecimal pricePerMinute;
+    @Column(unique = true, nullable = false)
+    private String phoneNumber;
 }
+
 
