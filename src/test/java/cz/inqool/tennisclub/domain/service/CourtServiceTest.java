@@ -64,9 +64,7 @@ class CourtServiceTest {
     void create_ShouldThrowException_WhenNameAlreadyExists() {
         when(courtDao.findByName(COURT_NAME)).thenReturn(Optional.of(existingCourt));
 
-        assertThrows(CourtAlreadyExistsException.class, () -> {
-            courtService.create(newCourt);
-        });
+        assertThrows(CourtAlreadyExistsException.class, () -> courtService.create(newCourt));
 
         verify(courtDao).findByName(COURT_NAME);
         verify(courtDao, never()).save(any());
@@ -88,9 +86,7 @@ class CourtServiceTest {
     void update_ShouldThrowException_WhenCourtNotFound() {
         when(courtDao.findById(ID)).thenReturn(Optional.empty());
 
-        assertThrows(CourtNotFoundException.class, () -> {
-            courtService.update(existingCourt);
-        });
+        assertThrows(CourtNotFoundException.class, () -> courtService.update(existingCourt));
 
         verify(courtDao).findById(ID);
         verify(courtDao, never()).save(any());
@@ -110,9 +106,7 @@ class CourtServiceTest {
     void getById_ShouldThrowException_WhenNotFound() {
         when(courtDao.findById(ID)).thenReturn(Optional.empty());
 
-        assertThrows(CourtNotFoundException.class, () -> {
-            courtService.getById(ID);
-        });
+        assertThrows(CourtNotFoundException.class, () -> courtService.getById(ID));
 
         verify(courtDao).findById(ID);
     }
@@ -131,9 +125,7 @@ class CourtServiceTest {
     void getByName_ShouldThrowException_WhenNotFound() {
         when(courtDao.findByName(COURT_NAME)).thenReturn(Optional.empty());
 
-        assertThrows(CourtNotFoundException.class, () -> {
-            courtService.getByName(COURT_NAME);
-        });
+        assertThrows(CourtNotFoundException.class, () -> courtService.getByName(COURT_NAME));
 
         verify(courtDao).findByName(COURT_NAME);
     }
@@ -154,9 +146,7 @@ class CourtServiceTest {
     void deleteById_ShouldThrowException_WhenNotFound() {
         when(courtDao.findById(ID)).thenReturn(Optional.empty());
 
-        assertThrows(CourtNotFoundException.class, () -> {
-            courtService.deleteById(ID);
-        });
+        assertThrows(CourtNotFoundException.class, () -> courtService.deleteById(ID));
 
         verify(courtDao).findById(ID);
         verify(courtDao, never()).save(any());
@@ -178,9 +168,7 @@ class CourtServiceTest {
     void deleteByName_ShouldThrowException_WhenNotFound() {
         when(courtDao.findByName(COURT_NAME)).thenReturn(Optional.empty());
 
-        assertThrows(CourtNotFoundException.class, () -> {
-            courtService.deleteByName(COURT_NAME);
-        });
+        assertThrows(CourtNotFoundException.class, () -> courtService.deleteByName(COURT_NAME));
 
         verify(courtDao).findByName(COURT_NAME);
         verify(courtDao, never()).save(any());

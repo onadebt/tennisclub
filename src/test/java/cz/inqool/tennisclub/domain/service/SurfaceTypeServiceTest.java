@@ -98,9 +98,7 @@ public class SurfaceTypeServiceTest {
         when(surfaceTypeDao.findByName("Clay")).thenReturn(Optional.of(clayCourt));
 
         // Act & Assert
-        assertThrows(SurfaceAlreadyExistsException.class, () -> {
-            surfaceTypeService.create(clayCourt);
-        });
+        assertThrows(SurfaceAlreadyExistsException.class, () -> surfaceTypeService.create(clayCourt));
 
         verify(surfaceTypeDao).findByName("Clay");
         verify(surfaceTypeDao, never()).save(any());
@@ -142,9 +140,7 @@ public class SurfaceTypeServiceTest {
         when(surfaceTypeDao.findById(99L)).thenReturn(Optional.empty());
 
         // Act & Assert
-        assertThrows(SurfaceTypeNotFoundException.class, () -> {
-            surfaceTypeService.getById(99L);
-        });
+        assertThrows(SurfaceTypeNotFoundException.class, () -> surfaceTypeService.getById(99L));
 
         verify(surfaceTypeDao).findById(99L);
     }
@@ -170,9 +166,7 @@ public class SurfaceTypeServiceTest {
         when(surfaceTypeDao.findById(99L)).thenReturn(Optional.empty());
 
         // Act & Assert
-        assertThrows(SurfaceTypeNotFoundException.class, () -> {
-            surfaceTypeService.deleteById(99L);
-        });
+        assertThrows(SurfaceTypeNotFoundException.class, () -> surfaceTypeService.deleteById(99L));
 
         verify(surfaceTypeDao).findById(99L);
         verify(surfaceTypeDao, Mockito.never()).delete(any());
@@ -198,9 +192,7 @@ public class SurfaceTypeServiceTest {
         when(surfaceTypeDao.findByName("Nonexistent")).thenReturn(Optional.empty());
 
         // Act & Assert
-        assertThrows(SurfaceTypeNotFoundException.class, () -> {
-            surfaceTypeService.getByName("Nonexistent");
-        });
+        assertThrows(SurfaceTypeNotFoundException.class, () -> surfaceTypeService.getByName("Nonexistent"));
 
         verify(surfaceTypeDao).findByName("Nonexistent");
     }

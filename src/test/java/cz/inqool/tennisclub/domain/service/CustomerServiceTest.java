@@ -56,9 +56,7 @@ class CustomerServiceTest {
     void create_ShouldThrowException_WhenPhoneNumberExists() {
         when(customerDao.findByPhoneNumber(PHONE_NUMBER)).thenReturn(Optional.of(existingCustomer));
 
-        assertThrows(CustomerAlreadyExistsException.class, () -> {
-            customerService.create(newCustomer);
-        });
+        assertThrows(CustomerAlreadyExistsException.class, () -> customerService.create(newCustomer));
 
         verify(customerDao).findByPhoneNumber(PHONE_NUMBER);
         verify(customerDao, never()).save(any());
@@ -80,9 +78,7 @@ class CustomerServiceTest {
     void update_ShouldThrowException_WhenCustomerNotFound() {
         when(customerDao.findById(ID)).thenReturn(Optional.empty());
 
-        assertThrows(CustomerNotFoundException.class, () -> {
-            customerService.update(existingCustomer);
-        });
+        assertThrows(CustomerNotFoundException.class, () -> customerService.update(existingCustomer));
 
         verify(customerDao).findById(ID);
         verify(customerDao, never()).save(any());
@@ -137,9 +133,7 @@ class CustomerServiceTest {
     void getById_ShouldThrowException_WhenNotFound() {
         when(customerDao.findById(ID)).thenReturn(Optional.empty());
 
-        assertThrows(CustomerNotFoundException.class, () -> {
-            customerService.getById(ID);
-        });
+        assertThrows(CustomerNotFoundException.class, () -> customerService.getById(ID));
 
         verify(customerDao).findById(ID);
     }
@@ -158,9 +152,7 @@ class CustomerServiceTest {
     void getByPhoneNumber_ShouldThrowException_WhenNotFound() {
         when(customerDao.findByPhoneNumber(PHONE_NUMBER)).thenReturn(Optional.empty());
 
-        assertThrows(CustomerNotFoundException.class, () -> {
-            customerService.getByPhoneNumber(PHONE_NUMBER);
-        });
+        assertThrows(CustomerNotFoundException.class, () -> customerService.getByPhoneNumber(PHONE_NUMBER));
 
         verify(customerDao).findByPhoneNumber(PHONE_NUMBER);
     }
@@ -180,9 +172,7 @@ class CustomerServiceTest {
     void deleteById_ShouldThrowException_WhenNotFound() {
         when(customerDao.findById(ID)).thenReturn(Optional.empty());
 
-        assertThrows(CustomerNotFoundException.class, () -> {
-            customerService.deleteById(ID);
-        });
+        assertThrows(CustomerNotFoundException.class, () -> customerService.deleteById(ID));
 
         verify(customerDao).findById(ID);
         verify(customerDao, never()).delete(any());
@@ -203,9 +193,7 @@ class CustomerServiceTest {
     void deleteByPhoneNumber_ShouldThrowException_WhenNotFound() {
         when(customerDao.findByPhoneNumber(PHONE_NUMBER)).thenReturn(Optional.empty());
 
-        assertThrows(CustomerNotFoundException.class, () -> {
-            customerService.deleteByPhoneNumber(PHONE_NUMBER);
-        });
+        assertThrows(CustomerNotFoundException.class, () -> customerService.deleteByPhoneNumber(PHONE_NUMBER));
 
         verify(customerDao).findByPhoneNumber(PHONE_NUMBER);
         verify(customerDao, never()).delete(any());
