@@ -19,5 +19,7 @@ spring:
       ddl-auto: update
     show-sql: true
 
+
+# init data with 2 types of courts and 4 types of courtSurfaces if set to true
 app:
   data-init: false
