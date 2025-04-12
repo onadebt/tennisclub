@@ -4,12 +4,15 @@ import cz.inqool.tennisclub.domain.model.Court;
 import cz.inqool.tennisclub.infrastructure.dao.interfaces.CourtDao;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
+import lombok.Setter;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Setter
 @Transactional
 @Repository
 public class CourtDaoImpl implements CourtDao {
@@ -46,9 +49,13 @@ public class CourtDaoImpl implements CourtDao {
     }
 
     @Override
-    public Optional<Court> findByName(String courtNumber) {
-        Court court = entityManager.find(Court.class, courtNumber);
-        return (court != null && !court.isDeleted()) ? Optional.of(court) : Optional.empty();
+    public Optional<Court> findByName(String courtName) {
+        TypedQuery<Court> query = entityManager.createQuery(
+                "SELECT c FROM Court c WHERE c.courtName = :name AND c.deleted = false",
+                Court.class
+        );
+        query.setParameter("name", courtName);
+        return Optional.of(query.getSingleResult());
     }
 
     @Override

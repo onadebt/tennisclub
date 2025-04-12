@@ -5,11 +5,13 @@ import cz.inqool.tennisclub.infrastructure.dao.interfaces.CustomerDao;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
+import lombok.Setter;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Setter
 @Transactional
 @Repository
 public class CustomerDaoImpl implements CustomerDao {

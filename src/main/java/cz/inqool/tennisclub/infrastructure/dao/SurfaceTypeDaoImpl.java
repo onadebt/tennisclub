@@ -5,11 +5,13 @@ import cz.inqool.tennisclub.infrastructure.dao.interfaces.SurfaceTypeDao;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
+import lombok.Setter;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Setter
 @Repository
 @Transactional
 public class SurfaceTypeDaoImpl implements SurfaceTypeDao {
