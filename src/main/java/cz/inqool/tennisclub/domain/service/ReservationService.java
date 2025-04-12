@@ -40,9 +40,9 @@ public class ReservationService {
     public Reservation createReservation(String courtName, String customerPhone, String customerName,
                                          GameType gameType, LocalDateTime startTime, LocalDateTime endTime) {
         reservationValidator.validateTime(startTime, endTime);
+        reservationValidator.ensureNoOverlap(courtName, startTime, endTime);
         Court court = courtService.getByName(courtName);
         Customer customer = customerService.findOrCreate(customerPhone, customerName);
-        reservationValidator.ensureNoOverlap(courtName, startTime, endTime);
 
         BigDecimal price = priceCalculator.calculate(court, gameType, startTime, endTime);
 
