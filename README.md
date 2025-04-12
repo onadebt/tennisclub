@@ -113,7 +113,7 @@ The API returns standardized error responses:
 
 
 ## CLASS diagram
-![img.png](img.png)
+![img.png](src/main/resources/static/img.png)
 
 ## License
 
