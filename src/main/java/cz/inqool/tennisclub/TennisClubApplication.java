@@ -7,10 +7,10 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 
 @EnableConfigurationProperties(AppProperties.class)
 @SpringBootApplication
-public class TennisclubApplication {
+public class TennisClubApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TennisclubApplication.class, args);
+		SpringApplication.run(TennisClubApplication.class, args);
 	}
 
 }
