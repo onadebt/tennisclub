@@ -40,7 +40,7 @@ public class SurfaceTypeDaoImpl implements SurfaceTypeDao {
     @Override
     public Optional<SurfaceType> findById(Long id) {
         SurfaceType entity = entityManager.find(SurfaceType.class, id);
-        return Optional.of(entity)
+        return Optional.ofNullable(entity)
                 .filter(st -> !st.isDeleted());
     }
 
