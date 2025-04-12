@@ -24,6 +24,11 @@ public class SurfaceTypeService {
         if (surfaceTypeDao.findByName(surfaceType.getName()).isPresent()) {
             throw new SurfaceAlreadyExistsException(surfaceType.getName());
         }
+
+        if (surfaceType.getName() == null || surfaceType.getName().isEmpty() || surfaceType.getName().isBlank()) {
+            throw new IllegalArgumentException("Surface type name cannot be null, empty or blank");
+        }
+
         return surfaceTypeDao.save(surfaceType);
     }
 
