@@ -66,8 +66,4 @@ public class CourtService {
     public List<Court> getAllBySurfaceTypeName(String surfaceTypeName) {
         return courtDao.findAllBySurfaceTypeName(surfaceTypeName);
     }
-
-    public List<Court> getAllBySurfaceTypeId(Long surfaceTypeId) {
-        return courtDao.findAllBySurfaceTypeId(surfaceTypeId);
-    }
 }
