@@ -19,7 +19,7 @@ public class ReservationDaoImpl implements ReservationDao {
     private EntityManager em;
 
     @Override
-    public boolean existsOverlappingReservation(String courtNumber, LocalDateTime start, LocalDateTime end) {
+    public boolean existsOverlappingReservation(String courtName, LocalDateTime start, LocalDateTime end) {
         String jpql = """
                     SELECT COUNT(r) FROM Reservation r
                     WHERE r.court.id = :courtId AND r.deleted = false
@@ -29,7 +29,7 @@ public class ReservationDaoImpl implements ReservationDao {
                 """;
 
         Long count = em.createQuery(jpql, Long.class)
-                .setParameter("courtId", courtNumber)
+                .setParameter("courtId", courtName)
                 .setParameter("start", start)
                 .setParameter("end", end)
                 .getSingleResult();
