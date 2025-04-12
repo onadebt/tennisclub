@@ -27,8 +27,8 @@ public class CourtMapper {
     public CourtDto toDto(Court court) {
         CourtDto courtDto = new CourtDto();
         courtDto.setId(court.getId());
-        courtDto.setCourtNumber(court.getCourtName());
-        courtDto.setSurfaceTypeId(court.getSurfaceType().getId());
+        courtDto.setCourtName(court.getCourtName());
+        courtDto.setSurfaceTypeName(court.getSurfaceType().getName());
         return courtDto;
     }
 }

@@ -11,6 +11,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class CourtDto {
     private Long id;
-    private String courtNumber;
-    private Long surfaceTypeId;
+    private String courtName;
+    private String surfaceTypeName;
 }

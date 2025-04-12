@@ -44,7 +44,7 @@ class CourtMapperTest {
     @Test
     void toDto_shouldMapCorrectly() {
         SurfaceType surfaceType = new SurfaceType();
-        surfaceType.setId(10L);
+        surfaceType.setName("Clay");
 
         Court court = new Court();
         court.setId(1L);
@@ -54,8 +54,8 @@ class CourtMapperTest {
         CourtDto dto = courtMapper.toDto(court);
 
         assertEquals(1L, dto.getId());
-        assertEquals("2", dto.getCourtNumber());
-        assertEquals(10L, dto.getSurfaceTypeId());
+        assertEquals("2", dto.getCourtName());
+        assertEquals("Clay", dto.getSurfaceTypeName());
     }
 }
 
