@@ -64,5 +64,12 @@ public class CourtDaoImpl implements CourtDao {
                 .setParameter("stn", surfaceTypeName)
                 .getResultList();
     }
+
+    @Override
+    public List<Court> findAllBySurfaceTypeId(Long surfaceTypeId) {
+        return entityManager.createQuery("SELECT c FROM Court c WHERE c.surfaceType.id = :sti AND c.deleted = false", Court.class)
+                .setParameter("sti", surfaceTypeId)
+                .getResultList();
+    }
 }
 

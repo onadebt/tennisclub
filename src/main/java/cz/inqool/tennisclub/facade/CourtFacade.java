@@ -70,6 +70,13 @@ public class CourtFacade {
                 .collect(Collectors.toList());
     }
 
+    public List<CourtDto> getAllBySurfaceTypeId(Long surfaceTypeId) {
+        List<Court> courts = courtService.getAllBySurfaceTypeId(surfaceTypeId);
+        return courts.stream()
+                .map(courtMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
     public void deleteById(Long id) {
         courtService.deleteById(id);
     }
