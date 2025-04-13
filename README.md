@@ -56,31 +56,31 @@ mvn test
 ### Endpoints
 
 #### Courts
-- `POST /courts` - Create new court
-- `GET /courts` - List all courts
-- `GET /courts/{id}` - Get court by ID
-- `GET /courts/surface-types/{surfaceTypeName}` - Find courts by surface type
-- `PUT /courts/{courtName}` - Update court
-- `DELETE /courts/{courtName}` - Delete court by name
-- `DELETE /courts/id/{id}` - Delete court by ID
+- `POST /api/courts` - Create new court
+- `GET /api/courts` - List all courts
+- `GET /api/courts/{id}` - Get court by ID
+- `GET /api/courts/surface-types/{surfaceTypeName}` - Find courts by surface type
+- `PUT /api/courts/{courtName}` - Update court
+- `DELETE /api/courts/{courtName}` - Delete court by name
+- `DELETE /api/courts/id/{id}` - Delete court by ID
 
 #### Reservations
-- `POST /reservations` - Create new reservation
-- `GET /reservations` - List all reservations
-- `GET /reservations/{phoneNumber}` - Get reservations by customer phone
-- `GET /reservations/court/{courtName}` - Get reservations by court
-- `PUT /reservations/{id}` - Update reservation
-- `DELETE /reservations/{id}` - Cancel reservation
+- `POST /api/reservations` - Create new reservation
+- `GET /api/reservations` - List all reservations
+- `GET /api/reservations/{phoneNumber}` - Get reservations by customer phone
+- `GET /api/reservations/court/{courtName}` - Get reservations by court
+- `PUT /api/reservations/{id}` - Update reservation
+- `DELETE /api/reservations/{id}` - Cancel reservation
 
 #### Customers
-- `POST /customers` - Register new customer
-- `GET /customers` - List all customers
+- `POST /api/customers` - Register new customer
+- `GET /api/customers` - List all customers
 
 #### Surface Types
-- `POST /surface-types` - Create new surface type
-- `GET /surface-types` - List all surface types
-- `GET /surface-types/{id}` - Get surface type by ID
-- `DELETE /surface-types/{id}` - Delete surface type
+- `POST /api/surface-types` - Create new surface type
+- `GET /api/surface-types` - List all surface types
+- `GET /api/surface-types/{id}` - Get surface type by ID
+- `DELETE /api/surface-types/{id}` - Delete surface type
 
 ## Error Handling
 
