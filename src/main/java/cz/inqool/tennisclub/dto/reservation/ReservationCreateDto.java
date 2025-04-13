@@ -22,8 +22,8 @@ public class ReservationCreateDto {
 
     @NotNull(message = "Customer phone number cannot be null")
     @Pattern(
-            regexp = "^(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{4})(?: *x(\\d+))?$",
-            message = "Phone number must be 9 digits (e.g., +420 777 123 456)\""
+            regexp = "^(\\+420 ?)?\\d{3} ?\\d{3} ?\\d{3}$",
+            message = "Phone number must be 9 digits, optionally prefixed with +420 (e.g., +420 777 123 456 or 777123456)"
     )
     private String customerPhone;
 

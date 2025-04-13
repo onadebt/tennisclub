@@ -7,8 +7,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Set;
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -16,6 +14,6 @@ import java.util.Set;
 public class CustomerUpdateDto {
     @NotBlank
     private String name;
-    @Pattern(regexp = "^(\\+420)? ?[1-9][0-9]{2} ?[0-9]{3} ?[0-9]{3}$")
+    @Pattern(regexp = "^(\\+420 ?)?\\d{3} ?\\d{3} ?\\d{3}$")
     private String phoneNumber;
 }

@@ -14,6 +14,6 @@ import lombok.Setter;
 public class CustomerCreateDto {
     @NotBlank
     private String name;
-    @Pattern(regexp = "^(\\+420)? ?[1-9][0-9]{2} ?[0-9]{3} ?[0-9]{3}$")
+    @Pattern(regexp = "^(\\+420 ?)?\\d{3} ?\\d{3} ?\\d{3}$")
     private String phoneNumber;
 }
